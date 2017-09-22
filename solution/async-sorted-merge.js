@@ -13,7 +13,7 @@ const oldestLogBySourceAsync = async (logSource, index) => {
   }
 }
 
-const retrieveOldestLogs = async asyncPops => {
+const retrieveOldestLogsAsync = async asyncPops => {
   try {
     const logs = await Promise.all(asyncPops)
     return logs.filter(log => log !== false).sort(byDate);
@@ -27,7 +27,7 @@ const retrieveOldestLogs = async asyncPops => {
 module.exports = async (logSources, printer) => {
 
   try {
-    let oldestLogs = await retrieveOldestLogs(logSources.map(oldestLogBySourceAsync))
+    let oldestLogs = await retrieveOldestLogsAsync(logSources.map(oldestLogBySourceAsync))
 
     while (oldestLogs.length > 0) {
       const oldestLog = oldestLogs.shift();
