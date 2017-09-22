@@ -54,3 +54,6 @@ module.exports = (logSources, printer) => {
  
   printer.done();
 }
+
+module.exports.merge = merge;
+module.exports.byDate = byDate;
